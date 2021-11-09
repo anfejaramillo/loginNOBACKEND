@@ -13,15 +13,20 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.containerProducts {
+  flex-wrap: wrap;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+}
+
+.productImage {
+  height: 300px;
+  width: 300px;
+}
+
+.productElement {
+  margin: 7px;
 }
 
 .App-link {
