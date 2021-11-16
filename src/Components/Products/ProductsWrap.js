@@ -6,8 +6,9 @@ export default class ProductsWrap extends Component {
     return (
       <div className="container">
         <h2>Products Home Page</h2>
-        <div></div>
-        <Outlet />
+        <div>
+          <Outlet />
+        </div>
       </div>
     );
   }

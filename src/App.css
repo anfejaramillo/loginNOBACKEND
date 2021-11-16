@@ -6,6 +6,17 @@
   height: 40vmin;
   pointer-events: none;
 }
+.form-container input{
+  margin: 5px;
+}
+.form-container{
+  margin: 50px;
+  border:  5px;
+  border-color: #61dafb;
+  border-style: double ;
+  padding: 30px;
+  width: auto;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

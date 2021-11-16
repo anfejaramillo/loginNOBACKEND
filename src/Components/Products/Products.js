@@ -12,7 +12,8 @@ export default class Products extends Component {
       <div>
         <h2>All Products</h2>
         <div className="containerProducts">
-          {Object.entries(db).map(function (k) {
+          {
+          Object.entries(db).map(function (k) {
             return (
               <div className="productElement">
                 <h3>{k[1].productName.toLocaleUpperCase()}</h3>
@@ -25,7 +26,8 @@ export default class Products extends Component {
                 </Link>
               </div>
             );
-          })}
+          })
+          }
         </div>
       </div>
     );

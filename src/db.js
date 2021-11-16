@@ -99,4 +99,20 @@ let db = {
     rating: 4,
   },
 };
+let credentials = {
+  101: {
+    id_user: 101,
+    username: "acd",
+    password: "root",
+    nombre: "Mauricio Molina Camacho",
+  },
+  202: {
+    id_user: 202,
+    username: "didier",
+    password: "root",
+    nombre: "Jenny Isabella Molina Pareja",
+  },
+};
+
 module.exports.db = db;
+module.exports.credentials = credentials;
