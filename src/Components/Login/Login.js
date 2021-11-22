@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "../../App.css";
 import { credentials } from "../../db";
+import { urlHome } from "../../BackEnd";
+import axios from "axios";
 
 export default class Login extends Component {
   constructor(props) {
@@ -27,14 +29,14 @@ export default class Login extends Component {
     } else if (e.target.name == "username") {
       await this.setState({ username: e.target.value });
     }
-    console.log(this.state);
+    
   }
 
   async handleChange2(e) {
     if (e.target.name == "email") {
       await this.setState({ email: e.target.value });
     }
-    console.log(this.state);
+    
   }
 
   async handleRecoverClick(e) {
@@ -60,7 +62,7 @@ export default class Login extends Component {
   async recoverContrasena(e) {
     await this.setState({ recoverPassword: true });
     console.log(this.state);
-    e.target.value = '';
+    e.target.value = "";
   }
 
   async handleClick(e) {
@@ -71,18 +73,20 @@ export default class Login extends Component {
       alert("Usuario y contrasena deben de tener mas de 3 caracteres");
       return;
     }
-    Object.entries(credentials).forEach(function (k) {
-      if (
-        k[1].username == thisReference.state.username &&
-        k[1].password == thisReference.state.password
-      ) {
-        name = k[1].nombre;
-        isValidCredentials = true;
-      }
-    });
+
+    let data = {
+      user: {},
+      data: {
+        username: this.state.username,
+        password: this.state.password,
+      },
+    };
+    let response = await axios.post(urlHome + "credential", data);
+    console.log(response);
+    isValidCredentials = response.data.length == 1;
     if (isValidCredentials) {
       alert("Login exitoso");
-      this.handleToUpdate(true, this.state.username, name);
+      this.handleToUpdate(true, this.state.username, response.data[0].nombre);
     } else {
       alert("Usuario y/o contrasena equivocadas.");
       this.handleToUpdate(false, "", "");
@@ -97,7 +101,12 @@ export default class Login extends Component {
             <label>Nombre Usuario</label>
             <br />
 
-            <input name="username" type="text" onChange={this.handleChange} value={this.state.username} />
+            <input
+              name="username"
+              type="text"
+              onChange={this.handleChange}
+              value={this.state.username}
+            />
             <br />
             <label>Contrasena</label>
             <br />
@@ -126,7 +135,12 @@ export default class Login extends Component {
           <form className="form-container">
             <label>Por favor introduzca su correo electronico</label>
             <br />
-            <input name="email" type="email" onChange={this.handleChange2}  value={this.state.email}/>
+            <input
+              name="email"
+              type="email"
+              onChange={this.handleChange2}
+              value={this.state.email}
+            />
             <br />
             <input
               type="button"

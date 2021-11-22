@@ -30,6 +30,8 @@ export default class App extends Component {
       <div className="App">
         <header className="App-header">
           <nav>
+            <div>Username: {this.state.username}</div>
+            <div>Nombre: {this.state.nombre}</div>
             <ul>
               <li>
                 <Link to="/">Home</Link>
